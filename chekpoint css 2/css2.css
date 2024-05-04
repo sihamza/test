@@ -1,0 +1,16 @@
+a{
+     color: #00b39b; 
+     padding: 50px 200px; 
+     font-size: 16px;
+    border: none; 
+    cursor: pointer; 
+     border-radius: 5px;
+}
+h1{
+    color: #00b39b; 
+    padding: 10px 600px; 
+    font-size: 20px;
+   border: center; 
+   cursor: center; 
+    border-radius: 50px;
+}

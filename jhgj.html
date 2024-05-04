@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shopping Cart</title>
+<style>
+  /* CSS for styling */
+  .item {
+    border-bottom: 1px solid #ccc;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+  }
+  .item img {
+    width: 50px;
+    margin-right: 10px;
+  }
+  .item-info {
+    flex-grow: 1;
+  }
+  .quantity {
+    margin-right: 10px;
+  }
+  .delete-btn {
+    color: red;
+    cursor: pointer;
+  }
+  .like-btn {
+    cursor: pointer;
+  }
+  .like-btn.active {
+    color: red;
+  }
+</style>
+</head>
+<body>
+
+<div id="cart">
+  <!-- Item 1 -->
+  <div class="item" id="item1">
+    <img src="item1.jpg" alt="Item 1">
+    <div class="item-info">
+      <div>Item 1</div>
+      <div class="quantity">Quantity: <span id="quantity1">1</span></div>
+      <div>Price: $10</div>
+    </div>
+    <button class="delete-btn" onclick="deleteItem('item1')">Delete</button>
+    <span class="like-btn" onclick="toggleLike('item1')">&#10084;</span>
+  </div>
+
+  <!-- Item 2 -->
+  <div class="item" id="item2">
+    <img src="item2.jpg" alt="Item 2">
+    <div class="item-info">
+      <div>Item 2</div>
+      <div class="quantity">Quantity: <span id="quantity2">1</span></div>
+      <div>Price: $15</div>
+    </div>
+    <button class="delete-btn" onclick="deleteItem('item2')">Delete</button>
+    <span class="like-btn" onclick="toggleLike('item2')">&#10084;</span>
+  </div>
+
+  <!-- Total Price -->
+  <div id="total-price">Total Price: $25</div>
+</div>
+
+<script>
+  // JavaScript for functionality
+  function adjustQuantity(itemId, increment) {
+    const quantityElement = document.getElementById(`quantity${itemId}`);
+    let quantity = parseInt(quantityElement.textContent);
+    if (increment) {
+      quantity++;
+    } else {
+      if (quantity > 1) {
+        quantity--;
+      } else {
+        return; // Prevent quantity from becoming negative
+      }
+    }
+    quantityElement.textContent = quantity;
+    updateTotalPrice();
+  }
+
+  function deleteItem(itemId) {
+    const itemElement = document.getElementById(itemId);
+    itemElement.parentNode.removeChild(itemElement);
+    updateTotalPrice();
+  }
+
+  function toggleLike(itemId) {
+    const likeBtn = document.querySelector(`#${itemId} .like-btn`);
+    likeBtn.classList.toggle('active');
+  }
+
+  function updateTotalPrice() {
+    let totalPrice = 0;
+    document.querySelectorAll('.item').forEach(item => {
+      const quantity = parseInt(item.querySelector('.quantity span').textContent);
+      const price = parseFloat(item.querySelector('.item-info div:nth-child(3)').textContent.split('$')[1]);
+      totalPrice += quantity * price;
+    });
+    document.getElementById('total-price').textContent = `Total Price: $${totalPrice.toFixed(2)}`;
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,46 @@
+main{
+    font-family: 'Roboto';font-size: 22px;
+}
+footer{
+    font-family: 'Roboto';font-size: 22px;
+}
+ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #df0b0b;
+  }
+  
+  li {
+    float: left;
+  }
+  
+  li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  li a:hover {
+    background-color: #111; }
+body {
+    background-image: url("ima.jpg");
+ }
+body{
+    color: #fffefe;
+}
+h3{ 
+    color: #0875f1; 
+}
+p{
+    color: #030963; 
+}
+h6{
+    color: #f10808;
+}
+h7{
+    color: #ce8c63;
+}
